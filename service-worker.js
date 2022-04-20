@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/jeromebsr/mdl-waitingTimes/precache-manifest.915b1316e22df00e0f7c57f314ac2023.js"
+  "/jeromebsr/dlp-wt/precache-manifest.792fb1d265bf6d675e14e10de6d4c9a0.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/jeromebsr/mdl-waitingTimes/index.html", {
+workbox.routing.registerNavigationRoute("/jeromebsr/dlp-wt/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });
