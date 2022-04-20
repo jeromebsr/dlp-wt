@@ -1,0 +1,7 @@
+PARKS IDs: 
+
+Disneyland Paris : e8d0207f-da8a-4048-bec8-117aa946b2c2 (
+    Disneyland Park : dae968d5-630d-4719-8b06-3d107e944401
+    Walt Disney Studios Park : ca888437-ebb4-4d50-aed2-d227f7096968
+)
+    
