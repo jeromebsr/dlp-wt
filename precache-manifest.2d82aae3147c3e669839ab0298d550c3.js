@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/jeromebsr/dlp-wt/static/js/runtime~main.b815c099.js"
   },
   {
-    "revision": "63487329709c092cb8c7aa57852f8587",
+    "revision": "9506469d5acb437098f4e0b7c27c21e5",
     "url": "/jeromebsr/dlp-wt/index.html"
   }
 ];
