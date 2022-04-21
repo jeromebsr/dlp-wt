@@ -18,11 +18,11 @@ function WaitTime() {
         },
         {
             id: "dae968d5-630d-4719-8b06-3d107e944401",
-            name: "Disneyland Park",
+            name: "Parc Disneyland",
         },
         {
             id: "ca888437-ebb4-4d50-aed2-d227f7096968",
-            name: "Walt Disney Studios Park",
+            name: "Parc Walt Disney Studios",
         },
     ];
 
@@ -123,14 +123,6 @@ function WaitTime() {
 
     return (
         <Container className='mt-5 mb-5'>
-            <Form className='mb-3'>
-                <Form.Control 
-                    size="lg"
-                    type="text"
-                    placeholder="Chercher une attraction..." 
-                    onChange={(e) => (setFilter(e.target.value))}
-                />
-            </Form>
             <h6>Choisir un parc :</h6>
             <ButtonGroup>
                 {
@@ -173,6 +165,16 @@ function WaitTime() {
                        ))
                    }
                 </ButtonGroup>
+            </Col>
+            <Col className='mt-4'>
+            <Form>
+                <Form.Control 
+                    size="lg"
+                    type="text"
+                    placeholder="Chercher une attraction..." 
+                    onChange={(e) => (setFilter(e.target.value))}
+                />
+            </Form>
             </Col>
             {
                 <ListGroup className='mt-5'> 
