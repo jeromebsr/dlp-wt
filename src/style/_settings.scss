@@ -1,0 +1,85 @@
+@font-face {
+  font-family: "font-1";
+  src: url(../assets/fonts/Filson-Soft-W03-Bold.ttf);
+}  
+@font-face {
+  font-family: "font-1";
+  src: url(../assets/fonts/Quicksand-Medium.ttf);
+}  
+
+$font-1: "font-1", sans-serif;
+$font-2: "font-2", serif;
+
+$bg: rgb(238 245 255);
+$color-1: #eefff7;
+$color-2: #8459ff;
+$color-3: #e7f7fe;
+$color-4: rgb(141, 141, 141);
+$black: rgb(40, 40, 40);
+$red: rgb(253, 87, 87);
+
+:export {
+  bg: $bg;
+}
+ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  outline: none;
+  border: none;
+  text-decoration: none;
+
+  &::selection {
+    color: $color-1;
+    background: $color-2;
+  }
+}
+html { 
+  scroll-behavior: unset;
+}
+a,
+a:visited {
+  color: $color-4;
+}
+
+// Animate the size, inside
+.fill:hover,
+.fill:focus {
+  box-shadow: inset 0 0 0 2em var(--color);
+}
+
+// Animating from the bottom
+.up:hover,
+.up:focus {
+  box-shadow: inset 0 -3.25em 0 0 var(--color);
+}
+
+body {
+  font-family: $font-1;
+  height: 100vh;
+  background-color: $bg;
+  color: $black;
+
+  @media screen and (max-width: 430px){
+    position: relative;
+    max-width: 100vw;
+    overflow-y: initial;
+  }
+}
+
+h2 {
+  font-family: $font-1;
+  color: $color-2;
+}
+main {
+  position: relative;
+}
+
+.inputSearch {
+  height: 70px;
+  border-radius: 100px;
+}
+
+
