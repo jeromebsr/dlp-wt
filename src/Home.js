@@ -19,7 +19,7 @@ function Home() {
                 style={{ 
                     display: isClicked ? "" : "none" 
                 }}>
-                    <Player start={isClicked ? true : false} />
+                <Player />
                 <Row>
                     <Col md={8}>
                         <WaitTime />

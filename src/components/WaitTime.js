@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import useSound from 'use-sound';
 import popSfx from '../assets/sounds/pop.wav';
 import clickSfx from '../assets/sounds/click.wav';
-import Player from './Player';
 
 function WaitTime() {
     const [entity, setEntity] = useState("e8d0207f-da8a-4048-bec8-117aa946b2c2");

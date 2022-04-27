@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import music from '../assets/sounds/music.mp3';
 
-function Player({ start }) {
+function Player() {
     const [audio] = useState(new Audio(music));
-    const [playing, setPlaying] = useState();
-    
-    const toggle = setInterval(() => {
-        setPlaying(!playing)
-    }, 3000);
+    const [playing, setPlaying] = useState(true);
+
+    const toggle = () => {
+        playing ? audio.play() : audio.pause();
+    }
 
     useEffect(() => {
-        playing ? audio.play() : audio.pause();
-    }, [playing]);
+        toggle();
+    })
     
     return (
         <div>
             <i 
                 style={{ cursor: 'pointer' }} 
-                onClick={() => toggle} 
+                onClick={() => setPlaying(!playing)} 
                 className={ playing ? 'fa-solid fa-pause fa-2x' : 'fa-solid fa-play fa-2x'}
             ></i>           
         </div>
