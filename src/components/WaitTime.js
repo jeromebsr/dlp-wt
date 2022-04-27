@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import useSound from 'use-sound';
 import popSfx from '../assets/sounds/pop.wav';
 import clickSfx from '../assets/sounds/click.wav';
-import music from '../assets/sounds/music.mp3';
+import Player from './Player';
 
 function WaitTime() {
     const [entity, setEntity] = useState("e8d0207f-da8a-4048-bec8-117aa946b2c2");
@@ -18,7 +18,8 @@ function WaitTime() {
     const [filterStatus, setFilterStatus] = useState("OPERATING");
     const [playPop] = useSound(popSfx, {volume: 0.1});
     const [playClick] = useSound(clickSfx, {volume: 0.5});
-    const [play, { stop, isPlaying }] = useSound(music);
+    
+
     
     const parksList = [
         {
@@ -148,7 +149,6 @@ function WaitTime() {
 
     useEffect(() => {
         document.body.style.backgroundColor = currentBgColor;
-
         axios
             .get(`https://api.themeparks.wiki/v1/entity/${entity}/live`)
             .then((res) => setData(res.data.liveData))
@@ -162,15 +162,7 @@ function WaitTime() {
             exit="exit"
             variants={variants}
         >  
-            <Button
-                active={isPlaying}
-                size={60}
-                play={play}
-                stop={stop}
-            >
-                Play
-            </Button>
-            <Container className='mt-5 mb-5' >
+            <Container className='mt-5 mb-5'>
                 <h6>Choisir un parc :</h6>
                 <ButtonGroup>
                     {
@@ -180,7 +172,7 @@ function WaitTime() {
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
                                 className={park.id === entity ? "up active" : "up"}
-                                onMouseUp={playClick}
+                                onMouseDown={playClick}
                                 onMouseEnter={playPop}
                                 onClick={() => {
                                     setEntity(park.id);
@@ -202,7 +194,7 @@ function WaitTime() {
                                 whileTap={{ scale: 0.9 }}
                                 className={wl.id === waitTimeId ? "fill " + wl.btnStyle + " active" : "fill " + wl.btnStyle}
                                 onMouseEnter={playPop}
-                                onMouseUp={playClick}
+                                onMouseDown={playClick}
                                 onClick={() => {
                                     setWaitTimeId(wl.id);
                                     setCurrentBgColor(wl.bgColor)

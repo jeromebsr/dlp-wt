@@ -1,24 +1,19 @@
 import { AnimatePresence } from 'framer-motion';
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import Schedule from './components/Schedule';
-import WaitTime from './components/WaitTime';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './Home';
 
 function App() {
   return (
-    <AnimatePresence>
-      <Container>
-        <Row>
-          <Col md={8}>
-            <WaitTime />
-          </Col>
-          <Col md={4}>
-            <Schedule />
-          </Col>
-        </Row>
-      </Container>
-    </AnimatePresence>
+    <BrowserRouter>
+      <AnimatePresence>
+        <Routes>
+          {/* <Route path='/' element={<Loader />} /> */}
+          <Route path='/' element={<Home />} />
+          <Route path='*' element={<Home />} />
+        </Routes>
+      </AnimatePresence>
+  </BrowserRouter>
   );
 }
 
