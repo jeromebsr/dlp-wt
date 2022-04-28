@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/jeromebsr/dlp-wt/static/css/main.7c43b393.css",
-    "main.js": "/jeromebsr/dlp-wt/static/js/main.9bdb2270.js",
-    "static/js/845.775d0cb9.chunk.js": "/jeromebsr/dlp-wt/static/js/845.775d0cb9.chunk.js",
-    "static/media/music.mp3": "/jeromebsr/dlp-wt/static/media/music.81baa23e61a330eae87e.mp3",
-    "static/media/bg.mp4": "/jeromebsr/dlp-wt/static/media/bg.638a84ecb9d5dcbcb8ea.mp4",
-    "static/media/pop.wav": "/jeromebsr/dlp-wt/static/media/pop.90329493ac50795f809f.wav",
-    "static/media/Filson-Soft-W03-Bold.ttf": "/jeromebsr/dlp-wt/static/media/Filson-Soft-W03-Bold.c4f3c5cf20b5f62b8144.ttf",
-    "static/media/Quicksand-Medium.ttf": "/jeromebsr/dlp-wt/static/media/Quicksand-Medium.eb896a79553a58953cbf.ttf",
-    "static/media/click.wav": "/jeromebsr/dlp-wt/static/media/click.f490b8904d3591f3bba9.wav",
-    "index.html": "/jeromebsr/dlp-wt/index.html",
-    "main.7c43b393.css.map": "/jeromebsr/dlp-wt/static/css/main.7c43b393.css.map",
-    "main.9bdb2270.js.map": "/jeromebsr/dlp-wt/static/js/main.9bdb2270.js.map",
-    "845.775d0cb9.chunk.js.map": "/jeromebsr/dlp-wt/static/js/845.775d0cb9.chunk.js.map"
+    "main.css": "/dlp-wt/static/css/main.a452d09c.css",
+    "main.js": "/dlp-wt/static/js/main.628df8b5.js",
+    "static/js/845.775d0cb9.chunk.js": "/dlp-wt/static/js/845.775d0cb9.chunk.js",
+    "static/media/music.mp3": "/dlp-wt/static/media/music.81baa23e61a330eae87e.mp3",
+    "static/media/bg.mp4": "/dlp-wt/static/media/bg.638a84ecb9d5dcbcb8ea.mp4",
+    "static/media/pop.wav": "/dlp-wt/static/media/pop.90329493ac50795f809f.wav",
+    "static/media/Filson-Soft-W03-Bold.ttf": "/dlp-wt/static/media/Filson-Soft-W03-Bold.c4f3c5cf20b5f62b8144.ttf",
+    "static/media/Quicksand-Medium.ttf": "/dlp-wt/static/media/Quicksand-Medium.eb896a79553a58953cbf.ttf",
+    "static/media/click.wav": "/dlp-wt/static/media/click.f490b8904d3591f3bba9.wav",
+    "index.html": "/dlp-wt/index.html",
+    "main.a452d09c.css.map": "/dlp-wt/static/css/main.a452d09c.css.map",
+    "main.628df8b5.js.map": "/dlp-wt/static/js/main.628df8b5.js.map",
+    "845.775d0cb9.chunk.js.map": "/dlp-wt/static/js/845.775d0cb9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7c43b393.css",
-    "static/js/main.9bdb2270.js"
+    "static/css/main.a452d09c.css",
+    "static/js/main.628df8b5.js"
   ]
 }
