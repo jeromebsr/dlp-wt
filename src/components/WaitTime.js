@@ -17,7 +17,10 @@ function WaitTime() {
     const [filterStatus, setFilterStatus] = useState("OPERATING");
     const [playPop] = useSound(popSfx, {volume: 0.1});
     const [playClick] = useSound(clickSfx, {volume: 0.5});
-    
+    const [divWt, setDivWt] = useState(false);
+    const [divPark, setDivPark] = useState(false);
+    const [currentWt, setCurrentWt] = useState([]);
+    const [currentPark, setCurrentPark] = useState("");
 
     
     const parksList = [
@@ -162,58 +165,82 @@ function WaitTime() {
             variants={variants}
         >  
             <Container className='mt-5 mb-5'>
-                <h6>Choisir un parc :</h6>
-                <ButtonGroup>
+                <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setDivPark(!divPark)}
+                    className="up active"    
+                >
+                    {currentPark ? currentPark : "Choisir un parc"}
+                </motion.button>
+                <motion.div
+                    transition={{ ease: "easeOut", duration: 1 }}
+                    style={{ display: divPark ? '' : 'none' }}
+                >
                     {
                         parksList.map((park) => (
                             <motion.button
                                 key={park.id}
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
-                                className={park.id === entity ? "up active" : "up"}
+                                className={park.id === entity ? "fill primary active" : "fill primary"}
                                 onMouseDown={playClick}
                                 onMouseEnter={playPop}
                                 onClick={() => {
                                     setEntity(park.id);
+                                    setDivPark(false);
+                                    setCurrentPark(park.name)
                                 }}
                             >
                                 {park.name}        
                             </motion.button>
                         ))
                     }
-                </ButtonGroup>
-                <Col className='mt-2'>
-                    <h6>Trier par temps d'attente :</h6>
-                    <ButtonGroup>
-                    {
-                        waitTimeList.map((wl) => (
-                            <motion.button
-                                key={wl.id}
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
-                                className={wl.id === waitTimeId ? "fill " + wl.btnStyle + " active" : "fill " + wl.btnStyle}
-                                onMouseEnter={playPop}
-                                onMouseDown={playClick}
-                                onClick={() => {
-                                    setWaitTimeId(wl.id);
-                                    setCurrentBgColor(wl.bgColor)
-                                    
-                                    if(wl.min === null) {
-                                        setFilterStatus("CLOSED")
-                                    }else {
-                                        setFilterStatus("OPERATING")
-                                        setWaitTimeMin(wl.min);
-                                        setWaitTimeMax(wl.max);
-                                    }
-                                }}
-                            >
-                                {wl.name}
-                            </motion.button>
+                </motion.div>
+                <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => setDivWt(!divWt)}
+                        className={currentWt[1] ? currentWt[1] + " active" : "up active"}
+                    >
+                        {console.log(currentWt[1])}
+                    {currentWt[0] ? currentWt[0] : "Trier par temps d'attente"}
+                </motion.button>
+                <motion.div
+                        transition={{ ease: "easeOut", duration: 1 }}
+                        style={{ display: divWt ? '' : 'none' }}
+                    > 
+                        {
+                            waitTimeList.map((wl) => (
+                                <motion.button
+                                    key={wl.id}
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.9 }}
+                                    className={wl.id === waitTimeId ? "fill " + wl.btnStyle + " active" : "fill " + wl.btnStyle}
+                                    onMouseEnter={playPop}
+                                    onMouseDown={playClick}
+                                    onClick={() => {
+                                        setWaitTimeId(wl.id);
+                                        setCurrentBgColor(wl.bgColor)
+                                        setDivWt(false)
+                                        setCurrentWt([wl.name, wl.btnStyle])
+                                        
+                                        if(wl.min === null) {
+                                            setFilterStatus("CLOSED")
+                                        }else {
+                                            setFilterStatus("OPERATING")
+                                            setWaitTimeMin(wl.min);
+                                            setWaitTimeMax(wl.max);
+                                        }
+                                    }}
+                                >
+                                    {wl.name}
+                                </motion.button>
 
-                        ))
-                    }
-                    </ButtonGroup>
-                </Col>
+                            ))
+                        }
+                    </motion.div>
+               
                 <Col className='mt-4'>
                 <Form>
                     <Form.Control 
