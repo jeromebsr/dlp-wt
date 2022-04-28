@@ -1,13 +1,21 @@
 {
-  "main.css": "/jeromebsr/dlp-wt/static/css/main.3bdee463.chunk.css",
-  "main.js": "/jeromebsr/dlp-wt/static/js/main.c755856d.chunk.js",
-  "main.js.map": "/jeromebsr/dlp-wt/static/js/main.c755856d.chunk.js.map",
-  "static/js/1.bf31e56d.chunk.js": "/jeromebsr/dlp-wt/static/js/1.bf31e56d.chunk.js",
-  "static/js/1.bf31e56d.chunk.js.map": "/jeromebsr/dlp-wt/static/js/1.bf31e56d.chunk.js.map",
-  "runtime~main.js": "/jeromebsr/dlp-wt/static/js/runtime~main.b815c099.js",
-  "runtime~main.js.map": "/jeromebsr/dlp-wt/static/js/runtime~main.b815c099.js.map",
-  "static/css/main.3bdee463.chunk.css.map": "/jeromebsr/dlp-wt/static/css/main.3bdee463.chunk.css.map",
-  "index.html": "/jeromebsr/dlp-wt/index.html",
-  "precache-manifest.9f5c9a9c58f00aa7b82802b732fbc0d0.js": "/jeromebsr/dlp-wt/precache-manifest.9f5c9a9c58f00aa7b82802b732fbc0d0.js",
-  "service-worker.js": "/jeromebsr/dlp-wt/service-worker.js"
+  "files": {
+    "main.css": "/jeromebsr/dlp-wt/static/css/main.7c43b393.css",
+    "main.js": "/jeromebsr/dlp-wt/static/js/main.9bdb2270.js",
+    "static/js/845.775d0cb9.chunk.js": "/jeromebsr/dlp-wt/static/js/845.775d0cb9.chunk.js",
+    "static/media/music.mp3": "/jeromebsr/dlp-wt/static/media/music.81baa23e61a330eae87e.mp3",
+    "static/media/bg.mp4": "/jeromebsr/dlp-wt/static/media/bg.638a84ecb9d5dcbcb8ea.mp4",
+    "static/media/pop.wav": "/jeromebsr/dlp-wt/static/media/pop.90329493ac50795f809f.wav",
+    "static/media/Filson-Soft-W03-Bold.ttf": "/jeromebsr/dlp-wt/static/media/Filson-Soft-W03-Bold.c4f3c5cf20b5f62b8144.ttf",
+    "static/media/Quicksand-Medium.ttf": "/jeromebsr/dlp-wt/static/media/Quicksand-Medium.eb896a79553a58953cbf.ttf",
+    "static/media/click.wav": "/jeromebsr/dlp-wt/static/media/click.f490b8904d3591f3bba9.wav",
+    "index.html": "/jeromebsr/dlp-wt/index.html",
+    "main.7c43b393.css.map": "/jeromebsr/dlp-wt/static/css/main.7c43b393.css.map",
+    "main.9bdb2270.js.map": "/jeromebsr/dlp-wt/static/js/main.9bdb2270.js.map",
+    "845.775d0cb9.chunk.js.map": "/jeromebsr/dlp-wt/static/js/845.775d0cb9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7c43b393.css",
+    "static/js/main.9bdb2270.js"
+  ]
 }
