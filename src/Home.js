@@ -17,12 +17,12 @@ function Home() {
     const [isClicked, setIsClicked] = useState(false);
     return (
         <AnimatePresence>
-            <Navigation />
             <Container 
                 style={{ 
                     display: isClicked ? "" : "none" 
                 }}
             >
+                            <Navigation />
                 <Row>
                     <Col md={8}>
                         <WaitTime />
