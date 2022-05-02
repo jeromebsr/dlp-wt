@@ -45,6 +45,8 @@ function Navigation() {
                     cursor: 'pointer' 
                 }} 
                 onClick={() => setNavActive(false)}
+                onMouseDown={playClick}
+                onMouseEnter={playPop}
             > 
                 <i 
                     style={{ 
