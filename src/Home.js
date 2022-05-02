@@ -9,6 +9,7 @@ import popSfx from './assets/sounds/pop.wav';
 import clickSfx from './assets/sounds/click.wav';
 import useSound from 'use-sound';
 import bgVideo from './assets/videos/bg.mp4';
+import Navigation from './components/Navigation';
 
 function Home() {  
     const [playPop] = useSound(popSfx, {volume: 0.1});
@@ -16,12 +17,12 @@ function Home() {
     const [isClicked, setIsClicked] = useState(false);
     return (
         <AnimatePresence>
+            <Navigation />
             <Container 
                 style={{ 
                     display: isClicked ? "" : "none" 
                 }}
             >
-                <Player />
                 <Row>
                     <Col md={8}>
                         <WaitTime />

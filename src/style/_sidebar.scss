@@ -1,0 +1,39 @@
+ul {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 90%;
+    height: 100%;
+}
+a {
+    text-decoration: none;
+}
+
+a li{
+    font-size: 36px;
+    line-height: 2.5;
+    color: white;
+    padding: 20px;
+    transition: transform .3s cubic-bezier(0,0,0,1),opacity .3s ease-in-out;
+    border-radius: 100px;
+}
+
+a:hover li {
+    color: black !important;
+    background: #fd0;
+    transform: translateY(-10%);
+}
+
+a:active li {
+    background: #fd0;
+    color: black !important
+}
+
+a:visited li {
+    color: white;
+}
+
+.nav-active {
+    background: #fd0;
+    color: black !important
+}

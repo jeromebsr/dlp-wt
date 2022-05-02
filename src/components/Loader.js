@@ -10,11 +10,6 @@ function Loader() {
     const [isClicked, setIsClicked] = useState(false);
     document.body.style.backgroundColor = "#FFF2F2";
 
-    const checkIfMounted = () => {
-        if (isClicked) {
-        }
-    }
-
     return (
         <motion.div 
             style={{ 

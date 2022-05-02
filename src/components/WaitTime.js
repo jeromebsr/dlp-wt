@@ -198,12 +198,11 @@ function WaitTime() {
                     }
                 </motion.div>
                 <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={() => setDivWt(!divWt)}
-                        className={currentWt[1] ? currentWt[1] + " active" : "up active"}
-                    >
-                        {console.log(currentWt[1])}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setDivWt(!divWt)}
+                    className={currentWt[1] ? currentWt[1] + " active" : "up active"}
+                >
                     {currentWt[0] ? currentWt[0] : "Trier par temps d'attente"}
                 </motion.button>
                 <motion.div
@@ -240,7 +239,6 @@ function WaitTime() {
                             ))
                         }
                     </motion.div>
-               
                 <Col className='mt-4'>
                 <Form>
                     <Form.Control 

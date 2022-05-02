@@ -1,0 +1,20 @@
+.sidebar {
+    z-index: 1;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    height: calc(var(--vh, 1vh)*100);
+    width: 100%;
+    max-width: 600px;
+    background: #8459ff;
+    padding: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    transition: transform .5s cubic-bezier(0,0,0,1);
+}
