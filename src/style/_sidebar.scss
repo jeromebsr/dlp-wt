@@ -13,9 +13,9 @@ a li{
     font-size: 36px;
     line-height: 2.5;
     color: white;
-    padding: 20px;
     transition: transform .3s cubic-bezier(0,0,0,1),opacity .3s ease-in-out;
     border-radius: 100px;
+    text-align: center;
 }
 
 a:hover li {

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import useSound from 'use-sound';
 import popSfx from '../assets/sounds/pop.wav';
 import clickSfx from '../assets/sounds/click.wav';
+import Navigation from './Navigation';
 
 function WaitTime() {
     const [entity, setEntity] = useState("e8d0207f-da8a-4048-bec8-117aa946b2c2");
@@ -164,12 +165,15 @@ function WaitTime() {
             exit="exit"
             variants={variants}
         >  
+            <Navigation />
             <Container className='mt-5 mb-5'>
                 <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setDivPark(!divPark)}
                     className="up active"    
+                    onMouseDown={playClick}
+                    onMouseEnter={playPop}
                 >
                     {currentPark ? currentPark : "Choisir un parc"}
                 </motion.button>
@@ -240,15 +244,15 @@ function WaitTime() {
                         }
                     </motion.div>
                 <Col className='mt-4'>
-                <Form>
-                    <Form.Control 
-                        size="lg"
-                        type="text"
-                        placeholder="Chercher une attraction..." 
-                        onChange={(e) => (setFilter(e.target.value))}
-                        className="inputSearch"
-                    />
-                </Form>
+                    <Form>
+                        <Form.Control 
+                            size="lg"
+                            type="text"
+                            placeholder="Rechercher une attraction..." 
+                            onChange={(e) => (setFilter(e.target.value))}
+                            className="inputSearch"
+                        />
+                    </Form>
                 </Col>
                 {
                     <ListGroup className='mt-5'> 
@@ -274,7 +278,6 @@ function WaitTime() {
                             </motion.div>
                         ))}
                     </ListGroup>
-                    
                 }
             </Container>
         </motion.div>

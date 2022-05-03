@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Container, Card, Badge } from 'react-bootstrap';
 import dateFormat, { masks } from "dateformat";
+import Navigation from '../components/Navigation';
+import DatasSchedule from './DatasSchedule';
 
 function Schedule() {
     const [disneyParkData, setDisneyParkData] = useState([]);
@@ -15,76 +17,47 @@ function Schedule() {
 
     useEffect(() => {
         axios
-            .get("https://api.themeparks.wiki/v1/entity/dae968d5-630d-4719-8b06-3d107e944401/schedule")
-            .then((res) => setDisneyParkData(res.data.schedule))
+            .get("https://api.themeparks.wiki/preview/parks/DisneylandParisMagicKingdom/calendar")
+            .then((res) => setDisneyParkData(res.data))
 
         axios
-            .get("https://api.themeparks.wiki/v1/entity/ca888437-ebb4-4d50-aed2-d227f7096968/schedule")
-            .then((res) => setStudioParkData(res.data.schedule))
+            .get("https://api.themeparks.wiki/preview/parks/DisneylandParisWaltDisneyStudios/calendar")
+            .then((res) => setStudioParkData(res.data))
     }, []);
 
     return (
         <Container className='mt-5'>
+            <Navigation />
             <h4><i className="fa-solid fa-calendar-days"></i> <b>Aujourd'hui</b></h4>
             <p className='offset-1'><b>{dateFormat(Date.now(), "dd/mm/yyyy")}</b></p>
-            <Card className='mb-3' border="primary" style={{ width: '18rem' }}>
-                <Card.Header><b><i className="fa-solid fa-wand-magic-sparkles"></i> Parc Disneyland</b></Card.Header>
-                <Card.Body>
-                <Card.Text>
-                <h5><Badge bg="info">Horaires</Badge></h5>
-                    {
-                        disneyParkData
-                        .filter((data) => dateFormat(data.date, "dd-mm-yyyy") === dateFormat(Date.now(), "dd-mm-yyyy"))
-                        .filter((data) => data.type === "OPERATING")
-                        .map((el) => (
-                            <>
-                            <p><i className="fa-solid fa-clock"></i> De <b>{dateFormat(el.openingTime, "HH:MM")}</b> à <b>{dateFormat(el.closingTime, "HH:MM")}</b></p>
-                            </>
-                        ))
-                    }
-                    <h5><Badge bg="info">Heure de Magie</Badge></h5>
-                    {
-                        disneyParkData
-                        .filter((data) => dateFormat(data.date, "dd-mm-yyyy") === dateFormat(Date.now(), "dd-mm-yyyy"))
-                        .filter((data) => data.type === "EXTRA_HOURS")
-                        .map((el) => (
-                            <>
-                            <p><i className="fa-solid fa-clock"></i> De <b>{dateFormat(el.openingTime, "HH:MM")}</b> à <b>{dateFormat(el.closingTime, "HH:MM")}</b></p>
-                            </>
-                        ))
-                    }
-                </Card.Text>
-                </Card.Body>
-            </Card>
-            <Card className='mb-3' border="primary" style={{ width: '18rem' }}>
-                <Card.Header><b><i className="fa-solid fa-film"></i> Parc Walt Disney Studios</b></Card.Header>
-                <Card.Body>
-                <Card.Text>
-                <h5><Badge bg="info">Horaires</Badge></h5>
-                    {
-                        studioParkData
-                        .filter((data) => dateFormat(data.date, "dd-mm-yyyy") === dateFormat(Date.now(), "dd-mm-yyyy"))
-                        .filter((data) => data.type === "OPERATING")
-                        .map((el) => (
-                            <>
-                            <p><i className="fa-solid fa-clock"></i> De <b>{dateFormat(el.openingTime, "HH:MM")}</b> à <b>{dateFormat(el.closingTime, "HH:MM")}</b></p>
-                            </>
-                        ))
-                    }
-                    <h5><Badge bg="info">Heure de Magie</Badge></h5>
-                    {
-                        studioParkData
-                        .filter((data) => dateFormat(data.date, "dd-mm-yyyy") === dateFormat(Date.now(), "dd-mm-yyyy"))
-                        .filter((data) => data.type === "EXTRA_HOURS")
-                        .map((el) => (
-                            <>
-                            <p><i className="fa-solid fa-clock"></i> De <b>{dateFormat(el.openingTime, "HH:MM")}</b> à <b>{dateFormat(el.closingTime, "HH:MM")}</b></p>
-                            </>
-                        ))
-                    }
-                </Card.Text>
-                </Card.Body>
-            </Card>
+            {
+                disneyParkData
+                .filter((data) => dateFormat(data.date, "dd-mm-yyyy") === dateFormat(Date.now(), "dd-mm-yyyy"))
+                .map((el) => (
+                    <DatasSchedule 
+                        title='Parc Disneyland' 
+                        icon='fa-wand-magic-sparkles'
+                        openingTime={dateFormat(el.openingTime, "HH:MM")}
+                        closingTime={dateFormat(el.closingTime, "HH:MM")}
+                        openingExtraTime={dateFormat(el.special[0].openingTime, "HH:MM")}
+                        closingExtraTime={dateFormat(el.special[0].closingTime, "HH:MM")}
+                    />
+                ))
+            }
+            {
+                studioParkData
+                .filter((data) => dateFormat(data.date, "dd-mm-yyyy") === dateFormat(Date.now(), "dd-mm-yyyy"))
+                .map((el) => (
+                    <DatasSchedule 
+                        title='Parc Walt Disney Studios' 
+                        icon='fa-film'
+                        openingTime={dateFormat(el.openingTime, "HH:MM")}
+                        closingTime={dateFormat(el.closingTime, "HH:MM")}
+                        openingExtraTime={dateFormat(el.special[0].openingTime, "HH:MM")}
+                        closingExtraTime={dateFormat(el.special[0].closingTime, "HH:MM")}
+                    />
+                ))
+            } 
         </Container>
     );
 }

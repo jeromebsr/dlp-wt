@@ -4,7 +4,7 @@ import popSfx from '../assets/sounds/pop.wav';
 import clickSfx from '../assets/sounds/click.wav';
 import useSound from 'use-sound';
 import Sidebar from '../components/Sidebar';
-
+import { motion } from 'framer-motion';
 function Navigation() {
     const [navActive, setNavActive] = useState(false);
     const [playPop] = useSound(popSfx, {volume: 0.1});
@@ -12,13 +12,12 @@ function Navigation() {
 
     return (
         <>
-        <Container fluid className='mt-3'>
-            <Col 
+        <Container fluid className='mt-5'>
+            <motion.div 
                 style={{ 
                     float: 'right',
                     cursor: 'pointer' 
                 }} 
-                
                 onMouseDown={playClick}
                 onMouseEnter={playPop}
                 onClick={() => setNavActive(true)}
@@ -30,11 +29,11 @@ function Navigation() {
                         color: 'white',
                         padding: 20,
                         borderRadius: 100,
-                        right: 20
+                        right: 20,
                     }}
-                    class="fa-solid fa-bars"         
+                    className="fa-solid fa-bars"         
                 ></i>
-            </Col>
+            </motion.div>
         </Container>
         <Container 
             className='sidebar'
@@ -50,13 +49,15 @@ function Navigation() {
             > 
                 <i 
                     style={{ 
-                        float: 'right',
+                        position: 'absolute',
                         backgroundColor: 'white', 
                         color: '#5879e4',
                         padding: 20,
-                        borderRadius: 100
+                        borderRadius: 100,
+                        right: 20,
+                        top: 48,    
                     }}
-                    class="fa-solid fa-xmark"             
+                    className="fa-solid fa-xmark"             
                 ></i>
                 <Sidebar />
             </Col>
