@@ -5,6 +5,7 @@ import clickSfx from '../assets/sounds/click.wav';
 import useSound from 'use-sound';
 import Sidebar from '../components/Sidebar';
 import { motion } from 'framer-motion';
+
 function Navigation() {
     const [navActive, setNavActive] = useState(false);
     const [playPop] = useSound(popSfx, {volume: 0.1});
@@ -29,7 +30,7 @@ function Navigation() {
                         color: 'white',
                         padding: 20,
                         borderRadius: 100,
-                        right: 20,
+                        right: 10,
                     }}
                     className="fa-solid fa-bars"         
                 ></i>
@@ -43,7 +44,6 @@ function Navigation() {
                 style={{ 
                     cursor: 'pointer' 
                 }} 
-                onClick={() => setNavActive(false)}
                 onMouseDown={playClick}
                 onMouseEnter={playPop}
             > 
@@ -57,9 +57,10 @@ function Navigation() {
                         right: 20,
                         top: 48,    
                     }}
+                    onClick={() => setNavActive(false)}
                     className="fa-solid fa-xmark"             
                 ></i>
-                <Sidebar />
+                <Sidebar onClick={() => setNavActive(false)} />
             </Col>
         </Container>
         </>

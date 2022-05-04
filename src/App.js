@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Preloader from './components/Preloader';
 import Schedule from './components/Schedule';
 import WaitTime from './components/WaitTime';
+import Player from './components/Player';
 
 function App() {
   
@@ -14,6 +15,8 @@ function App() {
 }, []);
 
   return (
+    <>
+    <Player />
     <BrowserRouter>
       <AnimatePresence>
         <Routes>
@@ -24,6 +27,7 @@ function App() {
         </Routes>
       </AnimatePresence>
     </BrowserRouter>
+    </>
   );
 }
 
