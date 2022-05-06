@@ -5,7 +5,6 @@ import music from '../assets/sounds/music.mp3';
 function Player() {
     const [audio] = useState(new Audio(music));
     const [playing, setPlaying] = useState(true);
-    const [display, setDisplay] = useState(false);
 
     const toggle = () => {
         playing ? audio.play() : audio.pause();
@@ -19,11 +18,11 @@ function Player() {
     return (
         <Container 
             style={{ 
-                display: display ? null : 'none',
+                display: 'block',
                 position: 'fixed',
                 color: 'black',
                 borderRadius: 100,
-                left: 290,
+                right: 95,
                 top: 60,
                 zIndex: 2,
                 width: 1
