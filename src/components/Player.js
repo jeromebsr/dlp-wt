@@ -26,7 +26,7 @@ function Player() {
             x: -100,
         }
     }
-    
+
     useEffect(() => {
         audio.volume = 0.1;
         toggle();
@@ -34,21 +34,12 @@ function Player() {
     
     return (
         <motion.div
-        transition={{ ease: "easeOut", duration: 1 }}
+            transition={{ ease: "easeOut", duration: 1 }}
             initial="initial"
             animate="visible" 
             exit="exit"
             variants={variants}
-            style={{ 
-                display: 'block',
-                position: 'fixed',
-                color: 'black',
-                borderRadius: 100,
-                right: 95,
-                top: 60,
-                zIndex: 2,
-                width: 1
-            }}
+            className='player'
         >
             <i 
                 style={{ cursor: 'pointer' }} 

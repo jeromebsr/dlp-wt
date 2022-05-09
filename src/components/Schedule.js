@@ -9,12 +9,6 @@ function Schedule() {
     const [disneyParkData, setDisneyParkData] = useState([]);
     const [studioParkData, setStudioParkData] = useState([]);
 
-    const getToday = () => {
-        disneyParkData.map((el) => (
-           dateFormat(disneyParkData.date, "dd-mm-yyyy")
-        ))
-    }
-
     useEffect(() => {
         axios
             // .get("https://api.themeparks.wiki/preview/parks/DisneylandParisMagicKingdom/calendar")

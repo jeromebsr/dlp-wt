@@ -174,6 +174,7 @@ function WaitTime() {
                     className="up active"    
                     onMouseDown={playClick}
                     onMouseEnter={playPop}
+                    style={{ display: 'block' }}
                 >
                     {currentPark ? currentPark : "Choisir un parc"}
                 </motion.button>
@@ -206,6 +207,7 @@ function WaitTime() {
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setDivWt(!divWt)}
                     className={currentWt[1] ? currentWt[1] + " active" : "up active"}
+                    style={{ display: 'block' }}
                 >
                     {currentWt[0] ? currentWt[0] : "Trier par temps d'attente"}
                 </motion.button>
