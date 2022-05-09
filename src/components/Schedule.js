@@ -46,7 +46,7 @@ function Schedule() {
                 icon='fa-film'
                 openingTime={dateFormat(studioParkData[1]?.openingTime, "HH:MM")}
                 closingTime={dateFormat(studioParkData[1]?.closingTime, "HH:MM")}
-                openingExtraTime={dateFormat(studioParkData[0]?.closingTime, "HH:MM")}
+                openingExtraTime={dateFormat(studioParkData[0]?.openingTime, "HH:MM")}
                 closingExtraTime={dateFormat(studioParkData[0]?.closingTime, "HH:MM")}
             />
         </Container>
