@@ -3,14 +3,29 @@ import React from 'react';
 import { Card, Badge } from 'react-bootstrap';
 
 function DatasSchedule({ title, icon, openingTime, closingTime, openingExtraTime, closingExtraTime}) {
+    const variants = {
+        initial: {
+            opacity: 0,
+            trasition: {duration: 0.5},
+            x: 100,
+        },
+        visible: {
+            opacity: 1,
+            x: 0,
+        },
+        exit: {
+            opacity: 0,
+            transition: { duuration: 0.3 },
+            x: -100,
+        }
+    }
     return (
         <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: "calc(100vw - 100%)" }}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8 }}
-            style={{ x: 100 }}
-            transition={{ type: "spring", stiffness: 100 }}
+            transition={{ ease: "easeOut", duration: 1 }}
+            initial="initial"
+            animate="visible" 
+            exit="exit"
+            variants={variants}
         >
             <Card className='mb-3' border="primary" style={{ 
                 width: '18rem',

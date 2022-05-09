@@ -17,47 +17,38 @@ function Schedule() {
 
     useEffect(() => {
         axios
-            .get("https://api.themeparks.wiki/preview/parks/DisneylandParisMagicKingdom/calendar")
-            .then((res) => setDisneyParkData(res.data))
-
+            // .get("https://api.themeparks.wiki/preview/parks/DisneylandParisMagicKingdom/calendar")
+            .get("https://api.themeparks.wiki/v1/entity/dae968d5-630d-4719-8b06-3d107e944401/schedule")
+            .then((res) => setDisneyParkData(res.data.schedule))
         axios
-            .get("https://api.themeparks.wiki/preview/parks/DisneylandParisWaltDisneyStudios/calendar")
-            .then((res) => setStudioParkData(res.data))
+            .get("https://api.themeparks.wiki/v1/entity/ca888437-ebb4-4d50-aed2-d227f7096968/schedule")
+            .then((res) => setStudioParkData(res.data.schedule))
     }, []);
-
+    
+    
     return (
         <Container className='mt-5'>
             <Navigation />
             <h4><i className="fa-solid fa-calendar-days"></i> <b>Aujourd'hui</b></h4>
             <p className='offset-1'><b>{dateFormat(Date.now(), "dd/mm/yyyy")}</b></p>
-            {
-                disneyParkData
-                .filter((data) => dateFormat(data.date, "dd-mm-yyyy") === dateFormat(Date.now(), "dd-mm-yyyy"))
-                .map((el) => (
-                    <DatasSchedule 
-                        title='Parc Disneyland' 
-                        icon='fa-wand-magic-sparkles'
-                        openingTime={dateFormat(el.openingTime, "HH:MM")}
-                        closingTime={dateFormat(el.closingTime, "HH:MM")}
-                        openingExtraTime={dateFormat(el.special[0].openingTime, "HH:MM")}
-                        closingExtraTime={dateFormat(el.special[0].closingTime, "HH:MM")}
-                    />
-                ))
-            }
-            {
-                studioParkData
-                .filter((data) => dateFormat(data.date, "dd-mm-yyyy") === dateFormat(Date.now(), "dd-mm-yyyy"))
-                .map((el) => (
-                    <DatasSchedule 
-                        title='Parc Walt Disney Studios' 
-                        icon='fa-film'
-                        openingTime={dateFormat(el.openingTime, "HH:MM")}
-                        closingTime={dateFormat(el.closingTime, "HH:MM")}
-                        openingExtraTime={dateFormat(el.special[0].openingTime, "HH:MM")}
-                        closingExtraTime={dateFormat(el.special[0].closingTime, "HH:MM")}
-                    />
-                ))
-            } 
+            
+            <DatasSchedule 
+                title='Parc Disneyland' 
+                icon='fa-wand-magic-sparkles'
+                openingTime={dateFormat(disneyParkData[1]?.openingTime, "HH:MM")}
+                closingTime={dateFormat(disneyParkData[1]?.closingTime, "HH:MM")}
+                openingExtraTime={dateFormat(disneyParkData[0]?.openingTime, "HH:MM")}
+                closingExtraTime={dateFormat(disneyParkData[0]?.closingTime, "HH:MM")}
+            />
+                
+            <DatasSchedule 
+                title='Parc Walt Disney Studios' 
+                icon='fa-film'
+                openingTime={dateFormat(studioParkData[1]?.openingTime, "HH:MM")}
+                closingTime={dateFormat(studioParkData[1]?.closingTime, "HH:MM")}
+                openingExtraTime={dateFormat(studioParkData[0]?.closingTime, "HH:MM")}
+                closingExtraTime={dateFormat(studioParkData[0]?.closingTime, "HH:MM")}
+            />
         </Container>
     );
 }

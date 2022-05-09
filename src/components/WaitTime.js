@@ -159,11 +159,11 @@ function WaitTime() {
 
     return (
         <motion.div 
-            className="home" 
-            initial="initial"
-            animate="visible" 
-            exit="exit"
-            variants={variants}
+        transition={{ ease: "easeOut", duration: 1 }}
+        initial="initial"
+        animate="visible" 
+        exit="exit"
+        variants={variants}
         >  
             <Navigation />
             <Container className='mt-5 mb-5'>
