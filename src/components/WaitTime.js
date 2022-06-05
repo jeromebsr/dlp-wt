@@ -23,7 +23,6 @@ function WaitTime() {
     const [currentWt, setCurrentWt] = useState([]);
     const [currentPark, setCurrentPark] = useState("");
 
-    
     const parksList = [
         {
             id: "e8d0207f-da8a-4048-bec8-117aa946b2c2",
@@ -108,7 +107,6 @@ function WaitTime() {
         }else {
             setColor = "secondary"
         }
-
         return setColor;
     }
 
@@ -212,39 +210,39 @@ function WaitTime() {
                     {currentWt[0] ? currentWt[0] : "Trier par temps d'attente"}
                 </motion.button>
                 <motion.div
-                        transition={{ ease: "easeOut", duration: 1 }}
-                        style={{ display: divWt ? '' : 'none' }}
-                    > 
-                        {
-                            waitTimeList.map((wl) => (
-                                <motion.button
-                                    key={wl.id}
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.9 }}
-                                    className={wl.id === waitTimeId ? "fill " + wl.btnStyle + " active" : "fill " + wl.btnStyle}
-                                    onMouseEnter={playPop}
-                                    onMouseDown={playClick}
-                                    onClick={() => {
-                                        setWaitTimeId(wl.id);
-                                        setCurrentBgColor(wl.bgColor)
-                                        setDivWt(false)
-                                        setCurrentWt([wl.name, wl.btnStyle])
-                                        
-                                        if(wl.min === null) {
-                                            setFilterStatus("CLOSED")
-                                        }else {
-                                            setFilterStatus("OPERATING")
-                                            setWaitTimeMin(wl.min);
-                                            setWaitTimeMax(wl.max);
-                                        }
-                                    }}
-                                >
-                                    {wl.name}
-                                </motion.button>
+                    transition={{ ease: "easeOut", duration: 1 }}
+                    style={{ display: divWt ? '' : 'none' }}
+                > 
+                    {
+                        waitTimeList.map((wl) => (
+                            <motion.button
+                                key={wl.id}
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                className={wl.id === waitTimeId ? "fill " + wl.btnStyle + " active" : "fill " + wl.btnStyle}
+                                onMouseEnter={playPop}
+                                onMouseDown={playClick}
+                                onClick={() => {
+                                    setWaitTimeId(wl.id);
+                                    setCurrentBgColor(wl.bgColor)
+                                    setDivWt(false)
+                                    setCurrentWt([wl.name, wl.btnStyle])
+                                    
+                                    if(wl.min === null) {
+                                        setFilterStatus("CLOSED")
+                                    }else {
+                                        setFilterStatus("OPERATING")
+                                        setWaitTimeMin(wl.min);
+                                        setWaitTimeMax(wl.max);
+                                    }
+                                }}
+                            >
+                                {wl.name}
+                            </motion.button>
 
-                            ))
-                        }
-                    </motion.div>
+                        ))
+                    }
+                </motion.div>
                 <Col className='mt-4'>
                     <Form>
                         <Form.Control 
@@ -260,6 +258,7 @@ function WaitTime() {
                     <ListGroup className='mt-5'> 
                         {data
                         .filter((data) => data.name.includes(formatFilter(filter)))
+                        .filter((data) => data.entityType === "ATTRACTION")
                         .filter((data) => filterStatus === "OPERATING" ? data.queue.STANDBY.waitTime > waitTimeMin && data.queue.STANDBY.waitTime < WaitTimeMax : data.status.includes(filterStatus))
                         .sort((a,b) => (a.queue.STANDBY.waitTime - b.queue.STANDBY.waitTime))
                         .map((el) => (
