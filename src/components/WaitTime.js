@@ -261,8 +261,9 @@ function WaitTime() {
                         .filter((data) => data.entityType === "ATTRACTION")
                         .filter((data) => filterStatus === "OPERATING" ? data.queue.STANDBY.waitTime > waitTimeMin && data.queue.STANDBY.waitTime < WaitTimeMax : data.status.includes(filterStatus))
                         .sort((a,b) => (a.queue.STANDBY.waitTime - b.queue.STANDBY.waitTime))
-                        .map((el) => (
+                        .map((el, index) => (
                             <motion.div 
+                                key={index}
                                 transition={{ ease: "easeOut", duration: 1 }}
                                 initial="initial"
                                 animate="visible" 
