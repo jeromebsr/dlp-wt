@@ -58,8 +58,9 @@ function Shows() {
 
     const showsTime = (showTime) => {
         const getCurrentTime = Date.now();
+        const test = null;
         const showTimeList = [
-            showTime.startTime 
+            showTime.startTime
         ]
 
         return getCurrentTime > showTimeList[0] ? null : " " + dateFormat(showTimeList[0], "HH:MM").replace(':', 'h') + " - "
@@ -74,7 +75,7 @@ function Shows() {
             variants={variants}
         >  
             <Navigation />
-            <Container className='mt-5 mb-5'>
+            <Container className='mt-5 mb-5' style={{paddingTop:100}}>
                 <Col className='mt-4'>
                     <Form>
                         <Form.Control 
@@ -105,10 +106,12 @@ function Shows() {
                                     <h2>{el.name}</h2>
                                     <h5>{parkName(el.parkId)}</h5>
                                     <Alert variant="success">
-                                    <i className="fa-solid fa-clock"></i> Séances du jour : 
-                                    {el.showtimes.map((time) => (
-                                        showsTime(time) 
-                                    ))}
+                                    <i className="fa-solid fa-clock"></i> Séances à venir : 
+                                    <b>
+                                        {el.showtimes.map((time) => (
+                                            showsTime(time)
+                                        ))}
+                                    </b>
                                     </Alert>
                                 </div>   
                             </motion.div>
@@ -119,5 +122,5 @@ function Shows() {
         </motion.div>
     );
 }
-{/* {dateFormat(el.showtimes[0].startTime, "HH:MM")} */}
+
 export default Shows;

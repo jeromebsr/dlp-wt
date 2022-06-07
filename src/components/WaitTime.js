@@ -288,11 +288,13 @@ function WaitTime() {
                                         <>
                                         <Alert>
                                             <i className="fa-solid fa-ticket"></i> Premier Access tarif : <b>{new Intl.NumberFormat('fr-FR').format(el.queue.PAID_RETURN_TIME?.price.amount).slice(0, -2)}€ par pers.</b>
-                                            <br />
+                                            <hr />
                                             <i className="fa-solid fa-clock"></i> Prochain créneau horaire disponible :&nbsp; 
-                                            {dateFormat(el.queue.PAID_RETURN_TIME?.returnStart, "hh:MM,ss").replace(':', 'h').slice(0, -3)}
-                                            &nbsp;<i class="fa-solid fa-arrow-right-long"></i>&nbsp;
-                                            {dateFormat(el.queue.PAID_RETURN_TIME?.returnEnd, "hh:MM,ss").replace(':', 'h').slice(0, -3)}
+                                            <b>
+                                                {dateFormat(el.queue.PAID_RETURN_TIME?.returnStart, "hh:MM,ss").replace(':', 'h').slice(0, -3)}
+                                                &nbsp;<i class="fa-solid fa-arrow-right-long"></i>&nbsp;
+                                                {dateFormat(el.queue.PAID_RETURN_TIME?.returnEnd, "hh:MM,ss").replace(':', 'h').slice(0, -3)}
+                                            </b>
                                         </Alert>
                                         </>
                                     ) : null}

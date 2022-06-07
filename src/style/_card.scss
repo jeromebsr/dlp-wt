@@ -9,3 +9,14 @@
 .wtCard .alert {
     border-radius: 100px;
 }
+
+.alert{
+    padding: 1rem 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .wtCard, .alert {
+        border-radius: 40px !important;
+        padding: 10px 20px ;
+    }
+}
