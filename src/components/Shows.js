@@ -61,7 +61,7 @@ function Shows() {
         const showTimeList = [
             showTime.startTime 
         ]
-        console.log(showTimeList)
+
         return getCurrentTime > showTimeList[0] ? null : " " + dateFormat(showTimeList[0], "HH:MM").replace(':', 'h') + " - "
     }
 

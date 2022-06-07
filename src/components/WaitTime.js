@@ -6,6 +6,7 @@ import useSound from 'use-sound';
 import popSfx from '../assets/sounds/pop.wav';
 import clickSfx from '../assets/sounds/click.wav';
 import Navigation from './Navigation';
+import dateFormat, { masks } from "dateformat";
 
 function WaitTime() {
     const [entity, setEntity] = useState("e8d0207f-da8a-4048-bec8-117aa946b2c2");
@@ -259,7 +260,7 @@ function WaitTime() {
                         {data
                         .filter((data) => data.name.includes(formatFilter(filter)))
                         .filter((data) => data.entityType === "ATTRACTION")
-                        .filter((data) => filterStatus === "OPERATING" ? data.queue.STANDBY.waitTime > waitTimeMin && data.queue.STANDBY.waitTime < WaitTimeMax : data.status.includes(filterStatus)) // à vérifier avec le parc ouvert
+                        .filter((data) => filterStatus === "OPERATING" ? data.queue.STANDBY.waitTime > waitTimeMin && data.queue.STANDBY.waitTime < WaitTimeMax : data.status.includes(filterStatus))
                         .sort((a,b) => (a.queue.STANDBY.waitTime - b.queue.STANDBY.waitTime))
                         .map((el, index) => (
                             <motion.div 
@@ -276,18 +277,25 @@ function WaitTime() {
                                     <Alert variant={waitTimeColor(el.queue.STANDBY.waitTime)}>
                                         <i className="fa-solid fa-clock"></i> <b>{displayWaitTime(el.queue.STANDBY.waitTime)}</b>
                                     </Alert>
+                                    
                                     {el.queue.SINGLE_RIDER?.waitTime ? (
                                         <Alert variant={waitTimeColor(el.queue.SINGLE_RIDER?.waitTime)}>
                                             <i className="fa-solid fa-user-clock"></i> Single Rider :  <b>{displayWaitTime(el.queue.SINGLE_RIDER?.waitTime)}</b>
                                         </Alert>
-                                    ): null}
-                                    
-                                    {el.queue.PAID_RETURN_TIME?.amount ? (
-                                        <Alert variant={waitTimeColor(el.queue.PAID_RETURN_TIME?.amount)}>
-                                            <i className="fa-solid fa-ticket"></i> Premier access tarif : <b>{new Intl.NumberFormat('fr-FR').format(el.queue.PAID_RETURN_TIME?.price.amount)}€</b>
-                                        </Alert>
                                     ) : null}
                                     
+                                    {el.queue.PAID_RETURN_TIME?.price.amount ? (
+                                        <>
+                                        <Alert>
+                                            <i className="fa-solid fa-ticket"></i> Premier Access tarif : <b>{new Intl.NumberFormat('fr-FR').format(el.queue.PAID_RETURN_TIME?.price.amount).slice(0, -2)}€ par pers.</b>
+                                            <br />
+                                            <i className="fa-solid fa-clock"></i> Prochain créneau horaire disponible :&nbsp; 
+                                            {dateFormat(el.queue.PAID_RETURN_TIME?.returnStart, "hh:MM,ss").replace(':', 'h').slice(0, -3)}
+                                            &nbsp;<i class="fa-solid fa-arrow-right-long"></i>&nbsp;
+                                            {dateFormat(el.queue.PAID_RETURN_TIME?.returnEnd, "hh:MM,ss").replace(':', 'h').slice(0, -3)}
+                                        </Alert>
+                                        </>
+                                    ) : null}
                                 </div>   
                             </motion.div>
                         ))}
