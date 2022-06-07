@@ -291,9 +291,9 @@ function WaitTime() {
                                             <hr />
                                             <i className="fa-solid fa-clock"></i> Prochain créneau horaire disponible :&nbsp; 
                                             <b>
-                                                {dateFormat(el.queue.PAID_RETURN_TIME?.returnStart, "hh:MM,ss").replace(':', 'h').slice(0, -3)}
+                                                {dateFormat(el.queue.PAID_RETURN_TIME?.returnStart, "HH:MM,ss").replace(':', 'h').slice(0, -3)}
                                                 &nbsp;<i class="fa-solid fa-arrow-right-long"></i>&nbsp;
-                                                {dateFormat(el.queue.PAID_RETURN_TIME?.returnEnd, "hh:MM,ss").replace(':', 'h').slice(0, -3)}
+                                                {dateFormat(el.queue.PAID_RETURN_TIME?.returnEnd, "HH:MM,ss").replace(':', 'h').slice(0, -3)}
                                             </b>
                                         </Alert>
                                         </>
