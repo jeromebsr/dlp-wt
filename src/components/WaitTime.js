@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Container, Alert, ListGroup, ButtonGroup, Form, Col, Button } from 'react-bootstrap';
+import { Container, Alert, ListGroup, Form, Col } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import useSound from 'use-sound';
 import popSfx from '../assets/sounds/pop.wav';
@@ -259,7 +259,7 @@ function WaitTime() {
                         {data
                         .filter((data) => data.name.includes(formatFilter(filter)))
                         .filter((data) => data.entityType === "ATTRACTION")
-                        .filter((data) => filterStatus === "OPERATING" ? data.queue.STANDBY.waitTime > waitTimeMin && data.queue.STANDBY.waitTime < WaitTimeMax : data.status.includes(filterStatus))
+                        .filter((data) => filterStatus === "OPERATING" ? data.queue.STANDBY.waitTime > waitTimeMin && data.queue.STANDBY.waitTime < WaitTimeMax : data.status.includes(filterStatus)) // à vérifier avec le parc ouvert
                         .sort((a,b) => (a.queue.STANDBY.waitTime - b.queue.STANDBY.waitTime))
                         .map((el, index) => (
                             <motion.div 
@@ -276,6 +276,18 @@ function WaitTime() {
                                     <Alert variant={waitTimeColor(el.queue.STANDBY.waitTime)}>
                                         <i className="fa-solid fa-clock"></i> <b>{displayWaitTime(el.queue.STANDBY.waitTime)}</b>
                                     </Alert>
+                                    {el.queue.SINGLE_RIDER?.waitTime ? (
+                                        <Alert variant={waitTimeColor(el.queue.SINGLE_RIDER?.waitTime)}>
+                                            <i className="fa-solid fa-user-clock"></i> Single Rider :  <b>{displayWaitTime(el.queue.SINGLE_RIDER?.waitTime)}</b>
+                                        </Alert>
+                                    ): null}
+                                    
+                                    {el.queue.PAID_RETURN_TIME?.amount ? (
+                                        <Alert variant={waitTimeColor(el.queue.PAID_RETURN_TIME?.amount)}>
+                                            <i className="fa-solid fa-ticket"></i> Premier access tarif : <b>{new Intl.NumberFormat('fr-FR').format(el.queue.PAID_RETURN_TIME?.price.amount)}€</b>
+                                        </Alert>
+                                    ) : null}
+                                    
                                 </div>   
                             </motion.div>
                         ))}

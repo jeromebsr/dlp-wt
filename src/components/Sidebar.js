@@ -17,7 +17,14 @@ function Sidebar() {
             >
                 <li>Temps d'attente</li>
             </NavLink>
-       
+            <NavLink
+                to="/shows" 
+                className={(nav) => (nav.isActive ? "nav-active" : "")}
+                onMouseEnter={playPop}
+                onMouseDown={playClick}
+            >
+                <li>Spectacles</li>
+            </NavLink>
             <NavLink
                 to="/calendar" 
                 className={(nav) => (nav.isActive ? "nav-active" : "")}

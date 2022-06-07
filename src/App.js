@@ -5,6 +5,7 @@ import WaitTime from './components/WaitTime';
 import Schedule from './components/Schedule';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import bgVideo from './assets/videos/bg.mp4';
+import Shows from './components/Shows';
 
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
               <Routes>
                 {/* <Route path='/' element={<Loader />} /> */}
                 <Route path='/' element={<WaitTime />} />
+                <Route path='/shows' element={<Shows />} />
                 <Route path='/calendar' element={<Schedule />} />
                 <Route path='*' element={<WaitTime />} />
               </Routes>
