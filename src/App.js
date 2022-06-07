@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Player from './components/Player';
 import WaitTime from './components/WaitTime';
 import Schedule from './components/Schedule';
+import Stripe from './components/Stripe';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import bgVideo from './assets/videos/bg.mp4';
 import Shows from './components/Shows';
@@ -76,10 +77,10 @@ function App() {
           <BrowserRouter>
             <AnimatePresence>
               <Routes>
-                {/* <Route path='/' element={<Loader />} /> */}
                 <Route path='/' element={<WaitTime />} />
                 <Route path='/shows' element={<Shows />} />
                 <Route path='/calendar' element={<Schedule />} />
+                <Route path='/donation' element={<Stripe />} />
                 <Route path='*' element={<WaitTime />} />
               </Routes>
             </AnimatePresence>

@@ -33,6 +33,14 @@ function Sidebar() {
             >
                 <li>Calendrier</li>
             </NavLink>
+            <NavLink
+                to="/donation" 
+                className={(nav) => (nav.isActive ? "nav-active" : "")}
+                onMouseEnter={playPop}
+                onMouseDown={playClick}
+            >
+                <li><i class="fa-solid fa-mug-hot"></i> Payez-moi un café !</li>
+            </NavLink>
        </ul>
     );
 }
