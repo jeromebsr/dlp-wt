@@ -272,10 +272,14 @@ function WaitTime() {
                         //     data.status.includes("DOWN") + data.status.includes(filterStatus))
                         // )
                         .filter((data) => (
-                            waitTimeMin && waitTimeMax ? data.queue.STANDBY.waitTime > waitTimeMin && data.queue.STANDBY.waitTime < waitTimeMax  :  data.status.includes("DOWN") + data.status.includes(filterStatus)
+                            waitTimeMin && waitTimeMax ? (
+                                data.queue.STANDBY.waitTime > waitTimeMin && data.queue.STANDBY.waitTime < waitTimeMax
+                            ) : (
+                                data.status.includes("DOWN") + data.status.includes(filterStatus)
+                            )
                         ))
                         .sort((a,b) => (a.queue.STANDBY.waitTime - b.queue.STANDBY.waitTime))
-                        .sort((a,b) => (a.status.includes("DOWN") - b.status.includes("CLOSED")))
+                    
                         .map((el, index) => (
                             <motion.div 
                                 key={index}
@@ -285,7 +289,6 @@ function WaitTime() {
                                 exit="exit"
                                 variants={variants}
                             > 
-                            {console.log(waitTimeMin, waitTimeMax)}
                                 <div className='wtCard' key={el.id}>
                                     <h2>{el.name}</h2>
                                     <h5>{parkName(el.parkId)}</h5>
