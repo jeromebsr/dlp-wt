@@ -3,10 +3,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Player from './components/Player';
 import WaitTime from './components/WaitTime';
 import Schedule from './components/Schedule';
-import Stripe from './components/Stripe';
+import Donation from './components/Donation';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import bgVideo from './assets/videos/bg.mp4';
 import Shows from './components/Shows';
+import CheckoutForm from './components/CheckoutForm';
+import PaymentSuccess from './components/PaymentSuccess';
 
 
 function App() {
@@ -80,7 +82,9 @@ function App() {
                 <Route path='/' element={<WaitTime />} />
                 <Route path='/shows' element={<Shows />} />
                 <Route path='/calendar' element={<Schedule />} />
-                <Route path='/donation' element={<Stripe />} />
+                {/* <Route path='/donation' element={<Donation />} />
+                <Route path='/checkout/:amount' element={<CheckoutForm />} />
+                <Route path='/PaymentSuccess' element={<PaymentSuccess />} /> */}
                 <Route path='*' element={<WaitTime />} />
               </Routes>
             </AnimatePresence>

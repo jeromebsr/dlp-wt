@@ -12,7 +12,7 @@ function WaitTime() {
     const [entity, setEntity] = useState("e8d0207f-da8a-4048-bec8-117aa946b2c2");
     const [waitTimeId, setWaitTimeId] = useState(1);
     const [waitTimeMin, setWaitTimeMin] = useState(0);
-    const [WaitTimeMax, setWaitTimeMax] = useState(900);
+    const [waitTimeMax, setWaitTimeMax] = useState(900);
     const [currentBgColor, setCurrentBgColor] = useState("");
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState("");
@@ -53,7 +53,7 @@ function WaitTime() {
             name: "Moins de 15 min",
             btnStyle: "success",
             bgColor: "#eefff7",
-            min: 0,
+            min: 1,
             max: 15
         },
         {
@@ -114,7 +114,9 @@ function WaitTime() {
     const displayWaitTime = (wt) => {
         if(wt === null) {
             return "Fermé";
-        }else if (wt === 0) {
+        }else if (wt === "DOWN") {
+            return "Temporairement inaccessible";
+        } else if (wt === 0) {
             return "Ouvert";
         } else {
             return wt + " minutes";
@@ -158,11 +160,11 @@ function WaitTime() {
 
     return (
         <motion.div 
-        transition={{ ease: "easeOut", duration: 1 }}
-        initial="initial"
-        animate="visible" 
-        exit="exit"
-        variants={variants}
+            transition={{ ease: "easeOut", duration: 1 }}
+            initial="initial"
+            animate="visible" 
+            exit="exit"
+            variants={variants}
         >  
             <Navigation />
             <Container className='mt-5 mb-5'>
@@ -228,6 +230,11 @@ function WaitTime() {
                                     setCurrentBgColor(wl.bgColor)
                                     setDivWt(false)
                                     setCurrentWt([wl.name, wl.btnStyle])
+
+                                    if(wl.name === "Fermé") {
+                                        setWaitTimeMin(null)
+                                        setWaitTimeMax(null)
+                                    }
                                     
                                     if(wl.min === null) {
                                         setFilterStatus("CLOSED")
@@ -240,7 +247,6 @@ function WaitTime() {
                             >
                                 {wl.name}
                             </motion.button>
-
                         ))
                     }
                 </motion.div>
@@ -260,8 +266,16 @@ function WaitTime() {
                         {data
                         .filter((data) => data.name.includes(formatFilter(filter)))
                         .filter((data) => data.entityType === "ATTRACTION")
-                        .filter((data) => filterStatus === "OPERATING" ? data.queue.STANDBY.waitTime > waitTimeMin && data.queue.STANDBY.waitTime < WaitTimeMax : data.status.includes(filterStatus))
+                        // .filter((data) => filterStatus === "OPERATING" ? (
+                        //     data.queue.STANDBY.waitTime > waitTimeMin && data.queue.STANDBY.waitTime < waitTimeMax 
+                        // ) : (
+                        //     data.status.includes("DOWN") + data.status.includes(filterStatus))
+                        // )
+                        .filter((data) => (
+                            waitTimeMin && waitTimeMax ? data.queue.STANDBY.waitTime > waitTimeMin && data.queue.STANDBY.waitTime < waitTimeMax  :  data.status.includes("DOWN") + data.status.includes(filterStatus)
+                        ))
                         .sort((a,b) => (a.queue.STANDBY.waitTime - b.queue.STANDBY.waitTime))
+                        .sort((a,b) => (a.status.includes("DOWN") - b.status.includes("CLOSED")))
                         .map((el, index) => (
                             <motion.div 
                                 key={index}
@@ -271,13 +285,15 @@ function WaitTime() {
                                 exit="exit"
                                 variants={variants}
                             > 
+                            {console.log(waitTimeMin, waitTimeMax)}
                                 <div className='wtCard' key={el.id}>
                                     <h2>{el.name}</h2>
                                     <h5>{parkName(el.parkId)}</h5>
+
                                     <Alert variant={waitTimeColor(el.queue.STANDBY.waitTime)}>
-                                        <i className="fa-solid fa-clock"></i> <b>{displayWaitTime(el.queue.STANDBY.waitTime)}</b>
+                                        <i className="fa-solid fa-clock"></i> <b>{el.status === "DOWN" ? displayWaitTime("DOWN") : displayWaitTime(el.queue.STANDBY.waitTime)}</b>
                                     </Alert>
-                                    
+
                                     {el.queue.SINGLE_RIDER?.waitTime ? (
                                         <Alert variant={waitTimeColor(el.queue.SINGLE_RIDER?.waitTime)}>
                                             <i className="fa-solid fa-user-clock"></i> Single Rider :  <b>{displayWaitTime(el.queue.SINGLE_RIDER?.waitTime)}</b>
