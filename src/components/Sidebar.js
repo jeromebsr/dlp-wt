@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import useSound from 'use-sound';
 import popSfx from '../assets/sounds/pop.wav';
 import clickSfx from '../assets/sounds/click.wav';
@@ -33,14 +33,15 @@ function Sidebar() {
             >
                 <li>Calendrier</li>
             </NavLink>
-            <NavLink
-                to="https://magicagain.com" 
+            <a href='https://magicagain.com'
                 className={(nav) => (nav.isActive ? "nav-active" : "")}
                 onMouseEnter={playPop}
                 onMouseDown={playClick}
+                target="_blank"
+                rel='noreferrer'
             >
                 <li>Découvrez MagicAgain !</li>
-            </NavLink>
+            </a>
             
             {/* <NavLink
                 to="/donation" 
