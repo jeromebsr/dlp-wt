@@ -209,6 +209,8 @@ function WaitTime() {
                     onClick={() => setDivWt(!divWt)}
                     className={currentWt[1] ? currentWt[1] + " active" : "up active"}
                     style={{ display: 'block' }}
+                    onMouseEnter={playPop}
+                    onMouseDown={playClick}
                 >
                     {currentWt[0] ? currentWt[0] : "Trier par temps d'attente"}
                 </motion.button>
